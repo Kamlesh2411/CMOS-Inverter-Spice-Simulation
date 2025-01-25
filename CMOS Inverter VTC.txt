@@ -1,0 +1,21 @@
+*CMOS Inverter VTC 
+
+.include 180nm.bsim3.txt
+
+mp vd vin vo vd p1 w=20u l=2u
+mn vo vin 0 0 n1 w =10 l =2u
+cl vo 0 50f
+
+
+vdd vd 0 dc 1.8
+vg vi 0 dc 1.8 
+
+.control
+dc vg 0 1.8 0.05 
+run
+plot v(vo) v(vin)
+print v(vo) v(vin) > vtc 
+.endc
+
+
+.end
